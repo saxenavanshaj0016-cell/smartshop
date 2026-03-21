@@ -1,0 +1,243 @@
+:root {
+  --bg: #f5efe6;
+  --panel: rgba(255, 250, 244, 0.88);
+  --panel-strong: #fffaf3;
+  --ink: #1f1a17;
+  --muted: #62574e;
+  --accent: #d46a2e;
+  --accent-dark: #9b4317;
+  --line: rgba(31, 26, 23, 0.12);
+  --shadow: 0 18px 50px rgba(80, 48, 27, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(212, 106, 46, 0.18), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(98, 87, 78, 0.14), transparent 24%),
+    linear-gradient(135deg, #f7f0e6 0%, #f0e5d6 100%);
+}
+
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.hero-copy,
+.hero-card,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.hero-copy {
+  padding: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", sans-serif;
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+.hero-text,
+.hero-card p,
+.field span,
+.field input,
+.field select,
+.budget-result,
+.results-header p,
+.product-card p,
+.team-grid p {
+  font-size: 1rem;
+}
+
+.hero-card {
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(212, 106, 46, 0.1), rgba(255, 250, 244, 0.92));
+}
+
+.card-label,
+.price-badge,
+.platform-chip {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+}
+
+.panel {
+  padding: 24px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel-strong);
+  color: var(--ink);
+}
+
+.budget-box {
+  margin-top: 10px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(212, 106, 46, 0.08);
+}
+
+.action-button {
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.action-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(155, 67, 23, 0.22);
+}
+
+.budget-result {
+  min-height: 52px;
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--panel-strong);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 106, 46, 0.38);
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.price-badge {
+  color: var(--accent-dark);
+}
+
+.platform-chip {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(31, 26, 23, 0.07);
+  color: var(--muted);
+}
+
+.platform-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.best-deal {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(48, 131, 77, 0.12);
+  color: #1a6d39;
+  font-weight: 600;
+}
+
+.team-panel {
+  margin-top: 24px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.team-grid article {
+  padding: 18px;
+  border-radius: 18px;
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .layout,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}

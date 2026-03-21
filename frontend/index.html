@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Shopping Comparison and Budget Optimizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Bug Squashers</p>
+        <h1>Smart Shopping Comparison and Budget Optimizer</h1>
+        <p class="hero-text">
+          Search products, compare platform prices, and discover the best choices within your budget.
+        </p>
+      </div>
+      <div class="hero-card">
+        <p class="card-label">Target Problem Solved</p>
+        <p>
+          Helps users compare product prices across multiple platforms and reduce overspending through
+          budget-aware recommendations.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls-panel">
+        <h2>Search and Filter</h2>
+        <label class="field">
+          <span>Product Name</span>
+          <input id="searchInput" type="text" placeholder="Search for phones, shoes, watches...">
+        </label>
+
+        <label class="field">
+          <span>Category</span>
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Sort By</span>
+          <select id="sortSelect">
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A to Z</option>
+          </select>
+        </label>
+
+        <div class="budget-box">
+          <h3>Budget Optimizer</h3>
+          <label class="field">
+            <span>Maximum Budget (Rs.)</span>
+            <input id="budgetInput" type="number" min="0" placeholder="Enter your budget">
+          </label>
+          <button id="budgetButton" class="action-button">Find Best Match</button>
+          <div id="budgetResult" class="budget-result"></div>
+        </div>
+      </section>
+
+      <section class="panel results-panel">
+        <div class="results-header">
+          <div>
+            <h2>Product Comparison</h2>
+            <p id="resultCount">0 products found</p>
+          </div>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+    </main>
+
+    <section class="panel team-panel">
+      <h2>Team Modules</h2>
+      <div class="team-grid">
+        <article>
+          <h3>Rudraksh</h3>
+          <p>Frontend development using HTML, CSS, and JavaScript.</p>
+        </article>
+        <article>
+          <h3>Ghanshyam</h3>
+          <p>Database design and management using SQLite.</p>
+        </article>
+        <article>
+          <h3>Vanshaj</h3>
+          <p>Backend development in C++ for search, sorting, and budget optimization logic.</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
