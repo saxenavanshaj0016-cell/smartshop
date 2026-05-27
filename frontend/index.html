@@ -12,28 +12,65 @@
 <body>
   <div class="page-shell">
     <header class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Bug Squashers</p>
+      <div class="hero-copy panel">
+        <p class="eyebrow">Bug Squashers Final Phase</p>
         <h1>Smart Shopping Comparison and Budget Optimizer</h1>
         <p class="hero-text">
-          Search products, compare platform prices, and discover the best choices within your budget.
+          Explore a larger catalog, compare platform-wise pricing, shortlist favorites, and discover
+          budget-smart products through an interactive shopping dashboard.
         </p>
+        <div class="hero-actions">
+          <button id="showDealsButton" class="action-button">Show Best Deals</button>
+          <button id="resetButton" class="ghost-button">Reset Filters</button>
+        </div>
       </div>
-      <div class="hero-card">
-        <p class="card-label">Target Problem Solved</p>
-        <p>
-          Helps users compare product prices across multiple platforms and reduce overspending through
-          budget-aware recommendations.
-        </p>
+      <div class="hero-summary panel">
+        <div class="summary-card">
+          <p class="card-label">Catalog Size</p>
+          <h2 id="catalogCount">0</h2>
+          <p>Products across multiple categories and platforms.</p>
+        </div>
+        <div class="summary-card">
+          <p class="card-label">Live View</p>
+          <h2 id="visibleCount">0</h2>
+          <p>Products currently matching your filters.</p>
+        </div>
+        <div class="summary-card">
+          <p class="card-label">Budget Picks</p>
+          <h2 id="budgetCount">0</h2>
+          <p>Options currently available within your selected budget.</p>
+        </div>
       </div>
     </header>
 
+    <section class="metrics-row">
+      <article class="metric-card panel">
+        <p class="card-label">Cheapest Deal</p>
+        <h3 id="cheapestDealName">-</h3>
+        <p id="cheapestDealMeta">Search to discover deals.</p>
+      </article>
+      <article class="metric-card panel">
+        <p class="card-label">Top Rated</p>
+        <h3 id="topRatedName">-</h3>
+        <p id="topRatedMeta">Find highest-rated products instantly.</p>
+      </article>
+      <article class="metric-card panel">
+        <p class="card-label">Most Discounted</p>
+        <h3 id="discountDealName">-</h3>
+        <p id="discountDealMeta">Track the strongest discount offer.</p>
+      </article>
+    </section>
+
     <main class="layout">
       <section class="panel controls-panel">
-        <h2>Search and Filter</h2>
+        <div class="section-heading">
+          <h2>Search and Filter</h2>
+          <p>Refine by category, platform, rating, budget, and sorting.</p>
+        </div>
+
         <label class="field">
           <span>Product Name</span>
-          <input id="searchInput" type="text" placeholder="Search for phones, shoes, watches...">
+          <input id="searchInput" type="text" placeholder="Search for phones, books, beauty, fashion...">
         </label>
 
         <label class="field">
@@ -44,11 +81,30 @@
         </label>
 
         <label class="field">
+          <span>Platform</span>
+          <select id="platformFilter">
+            <option value="all">All Platforms</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Minimum Rating</span>
+          <select id="ratingFilter">
+            <option value="0">Any Rating</option>
+            <option value="4">4.0 and above</option>
+            <option value="4.3">4.3 and above</option>
+            <option value="4.5">4.5 and above</option>
+          </select>
+        </label>
+
+        <label class="field">
           <span>Sort By</span>
           <select id="sortSelect">
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
             <option value="name-asc">Name: A to Z</option>
+            <option value="rating-desc">Rating: High to Low</option>
+            <option value="discount-desc">Discount: High to Low</option>
           </select>
         </label>
 
@@ -56,10 +112,20 @@
           <h3>Budget Optimizer</h3>
           <label class="field">
             <span>Maximum Budget (Rs.)</span>
-            <input id="budgetInput" type="number" min="0" placeholder="Enter your budget">
+            <input id="budgetInput" type="range" min="500" max="100000" step="500" value="25000">
           </label>
+          <div class="range-readout">
+            <strong id="budgetValue">Rs. 25,000</strong>
+            <span id="budgetHint">Budget-aware recommendations update live.</span>
+          </div>
           <button id="budgetButton" class="action-button">Find Best Match</button>
           <div id="budgetResult" class="budget-result"></div>
+        </div>
+
+        <div class="wishlist-box">
+          <h3>Shortlist</h3>
+          <p id="wishlistCount">0 products shortlisted</p>
+          <div id="wishlistPreview" class="wishlist-preview">No favorites added yet.</div>
         </div>
       </section>
 
@@ -69,27 +135,42 @@
             <h2>Product Comparison</h2>
             <p id="resultCount">0 products found</p>
           </div>
+          <div class="compare-chip">
+            <span>Compare Tray</span>
+            <strong id="compareCount">0 selected</strong>
+          </div>
         </div>
+        <div id="insightStrip" class="insight-strip"></div>
         <div id="productGrid" class="product-grid"></div>
       </section>
     </main>
 
-    <section class="panel team-panel">
-      <h2>Team Modules</h2>
-      <div class="team-grid">
-        <article>
-          <h3>Rudraksh</h3>
-          <p>Frontend development using HTML, CSS, and JavaScript.</p>
-        </article>
-        <article>
-          <h3>Ghanshyam</h3>
-          <p>Database design and management using SQLite.</p>
-        </article>
-        <article>
-          <h3>Vanshaj</h3>
-          <p>Backend development in C++ for search, sorting, and budget optimization logic.</p>
-        </article>
-      </div>
+    <section class="bottom-layout">
+      <section class="panel compare-panel">
+        <div class="section-heading">
+          <h2>Quick Compare Tray</h2>
+          <p>Select up to three products to compare best prices, ratings, and stock.</p>
+        </div>
+        <div id="compareTray" class="compare-tray"></div>
+      </section>
+
+      <section class="panel team-panel">
+        <h2>Team Modules</h2>
+        <div class="team-grid">
+          <article>
+            <h3>Rudraksh</h3>
+            <p>Frontend development using HTML, CSS, and JavaScript.</p>
+          </article>
+          <article>
+            <h3>Ghanshyam</h3>
+            <p>Database design and management using SQLite.</p>
+          </article>
+          <article>
+            <h3>Vanshaj</h3>
+            <p>Backend development in C++ for search, sorting, and budget optimization logic.</p>
+          </article>
+        </div>
+      </section>
     </section>
   </div>
 
